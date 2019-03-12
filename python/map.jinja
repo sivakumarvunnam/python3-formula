@@ -1,0 +1,13 @@
+{% set python3 = salt['grains.filter_by']({
+    'default': {
+        'pkg': 'python36',
+        'pip_pkg': 'python36-pip',
+        'mako_pkg': 'python36-mako',
+    },
+    'Debian': {
+        'dev_pkg': 'python3-dev',
+    },
+    'RedHat': {
+        'dev_pkg': 'python36-devel',
+    },
+}, merge=salt['pillar.get']('python3:lookup'), base='default') %}
